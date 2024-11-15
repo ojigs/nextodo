@@ -68,6 +68,7 @@ export default function TaskItem({
                   {...register("title", { required: true })}
                   type="text"
                   placeholder="Title"
+                  autoFocus
                   className="font-mono text-slate-800 focus:outline-none focus:border-blue-500 border-b border-slate-200 w-full mb-2"
                 />
                 <label htmlFor="description" className="sr-only">
