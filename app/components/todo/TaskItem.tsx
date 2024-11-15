@@ -1,4 +1,3 @@
-// components/todo/TaskItem.tsx
 "use client";
 
 import { Task, FormValues } from "@/app/lib/definitions";
@@ -24,7 +23,7 @@ export default function TaskItem({
   onSave,
   onCancelEdit,
 }: TaskItemProps) {
-  const { register, handleSubmit, watch } = useForm<FormValues>({
+  const { register, handleSubmit } = useForm<FormValues>({
     defaultValues: {
       title: task.title,
       description: task.description,
