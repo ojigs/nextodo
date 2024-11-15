@@ -3,7 +3,7 @@ import TodoContainer from "@/app/components/todo/TodoContainer";
 
 export default function HomePage() {
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-50 to-slate-100 text-slate-800 py-8">
+    <div className="min-h-screen bg-gradient-to-b from-slate-200 to-slate-100 text-slate-800 py-8">
       <div className="max-w-2xl mx-auto px-4">
         <div className="mb-8 text-center">
           <h1 className="text-3xl font-bold text-slate-800 mb-2 font-mono">

@@ -30,13 +30,20 @@ export default function TaskList({
   onCancelEdit,
   onReorderTasks,
 }: TaskListProps) {
+  const isCompletedTask = title === "Completed";
   return (
     <div className="mb-8">
       <div className="flex items-center gap-2 mb-4">
         <h2 className="text-xl font-mono font-semibold text-slate-700">
           {title}
         </h2>
-        <span className="bg-blue-100 text-blue-800 text-xs font-medium px-2.5 py-0.5 rounded">
+        <span
+          className={`text-xs font-medium px-2.5 py-0.5 rounded ${
+            isCompletedTask
+              ? "bg-green-100 text-green-800"
+              : "bg-blue-100 text-blue-800"
+          }`}
+        >
           {tasks.length}
         </span>
       </div>
