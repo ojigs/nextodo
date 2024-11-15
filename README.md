@@ -14,6 +14,7 @@ A feature-rich Todo application built with Next.js 14, React, and Tailwind CSS.
 3. **State Management**: The application state is managed using React's useState hook, for efficient state updates.
 4. **Form Handling**: The react-hook-form library is used for form management.
 5. **Visual Feedback**: The user interface provides visual cues for task priorities, completed tasks, and overdue tasks.
+6. **Drag and Drop**: The tasks can be reordered tasks using the drag-and-drop interface
 
 ## Components
 
