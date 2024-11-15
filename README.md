@@ -47,6 +47,5 @@ The application is styled using Tailwind CSS. The layout and components are desi
 
 - **Server-side Data Fetching**: Integrate Next.js 14's built-in data fetching capabilities to fetch tasks from a server-side API.
 - **Persistence**: Implement a storage solution (e.g., localStorage, IndexedDB) to persist the user's tasks across sessions.
-- **Drag and Drop**: Add the ability to reorder tasks using a drag-and-drop interface.
 - **Subtasks and Checklists**: Expand the task model to support subtasks and checklists within each task.
 - **Notifications**: Implement a notification system to alert users of due dates, overdue tasks, or other important events.
