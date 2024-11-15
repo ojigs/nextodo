@@ -4,6 +4,7 @@ import { useState } from "react";
 import { Task, FormValues } from "@/app/lib/definitions";
 import AddTaskForm from "./AddTaskForm";
 import TaskList from "./TaskList";
+import { DropResult } from "@hello-pangea/dnd";
 
 export default function TodoContainer() {
   const [tasks, setTasks] = useState<Task[]>([]);
@@ -57,7 +58,7 @@ export default function TodoContainer() {
     setEditingId(null);
   };
 
-  const handleReorderTasks = (result: any) => {
+  const handleReorderTasks = (result: DropResult) => {
     const { destination, source } = result;
 
     if (!destination) return;

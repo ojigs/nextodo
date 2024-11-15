@@ -4,6 +4,7 @@ import { Task, FormValues } from "@/app/lib/definitions";
 import { useForm } from "react-hook-form";
 import TaskDisplay from "./TaskDisplay";
 import { MoreHorizontal } from "lucide-react";
+import { DraggableProvided } from "@hello-pangea/dnd";
 
 interface TaskItemProps {
   task: Task;
@@ -13,7 +14,7 @@ interface TaskItemProps {
   onEdit: (task: Task) => void;
   onSave: (id: number, data: FormValues) => void;
   onCancelEdit: () => void;
-  provided: any;
+  provided: DraggableProvided;
 }
 
 export default function TaskItem({

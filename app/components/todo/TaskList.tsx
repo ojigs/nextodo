@@ -1,6 +1,11 @@
 import { Task, FormValues } from "@/app/lib/definitions";
 import TaskItem from "./TaskItem";
-import { DragDropContext, Draggable, Droppable } from "@hello-pangea/dnd";
+import {
+  DragDropContext,
+  Draggable,
+  Droppable,
+  DropResult,
+} from "@hello-pangea/dnd";
 
 interface TaskListProps {
   title: string;
@@ -11,7 +16,7 @@ interface TaskListProps {
   onEdit: (task: Task) => void;
   onSave: (id: number, data: FormValues) => void;
   onCancelEdit: () => void;
-  onReorderTasks: (result: any) => void;
+  onReorderTasks: (result: DropResult) => void;
 }
 
 export default function TaskList({
