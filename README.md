@@ -1,36 +1,48 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Nextodo
 
-## Getting Started
+A feature-rich Todo application built with Next.js 14, React, and Tailwind CSS.
 
-First, run the development server:
+![Desktop View](/public/desktop-view.png) ![Mobile View](/public/mobile-view.png)
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+## Key Features
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+1. **Server-side Rendering**: The application leverages Next.js 14's server components to improve initial page load performance.
+2. **Modular Components**: The codebase is organized into smaller, focused components for better maintainability and testability.
+3. **State Management**: The application state is managed using React's useState hook, for efficient state updates.
+4. **Form Handling**: The react-hook-form library is used for form management.
+5. **Visual Feedback**: The user interface provides visual cues for task priorities, completed tasks, and overdue tasks.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Components
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+The application is divided into the following key components:
 
-## Learn More
+1. **TodoContainer**: The main container component that manages the application state and organizes the child components.
+2. **AddTaskForm**: Handles the creation of new tasks.
+3. **TaskList**: Renders the list of tasks, both pending and completed, and manages the editing state.
+4. **TaskItem**: Responsible for displaying a single task, including the ability to edit or delete it.
+5. **TaskDisplay**: Presents the task details, including priority, due date, and description.
 
-To learn more about Next.js, take a look at the following resources:
+## State Management
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+The application state is managed using React's `useState` hook, with the following key pieces of state:
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+- `tasks`: An array of task objects that shows the user's tasks.
+- `editingId`: The ID of the task currently being edited.
 
-## Deploy on Vercel
+The state is updated through various functions, such as `addTask`, `toggleTask`, `deleteTask`, `startEditing`, and `saveEdit`.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## Form Handling
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+The application uses the `react-hook-form` library for form management, making it easy to validate and submit the form. It manages the form state separately from the main application state.
+
+## Styling and Responsiveness
+
+The application is styled using Tailwind CSS. The layout and components are designed to be responsive for different screen sizes.
+
+## Want to contribute?
+
+- **Server-side Data Fetching**: Integrate Next.js 14's built-in data fetching capabilities to fetch tasks from a server-side API.
+- **Persistence**: Implement a storage solution (e.g., localStorage, IndexedDB) to persist the user's tasks across sessions.
+- **Drag and Drop**: Add the ability to reorder tasks using a drag-and-drop interface.
+- **Subtasks and Checklists**: Expand the task model to support subtasks and checklists within each task.
+- **Notifications**: Implement a notification system to alert users of due dates, overdue tasks, or other important events.
