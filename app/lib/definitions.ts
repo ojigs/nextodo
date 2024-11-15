@@ -6,6 +6,7 @@ export interface Task {
   dueDate: number | null;
   completed: boolean;
   createdAt: number;
+  completedAt: number | null;
 }
 
 export interface FormValues {

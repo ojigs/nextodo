@@ -20,6 +20,7 @@ export default function TodoContainer() {
         dueDate: data.dueDate ? new Date(data.dueDate).getTime() : null,
         completed: false,
         createdAt: Date.now(),
+        completedAt: null,
       },
       ...tasks,
     ]);
@@ -28,7 +29,13 @@ export default function TodoContainer() {
   const toggleTask = (id: number) => {
     setTasks(
       tasks.map((task) =>
-        task.id === id ? { ...task, completed: !task.completed } : task
+        task.id === id
+          ? {
+              ...task,
+              completed: !task.completed,
+              completedAt: !task.completed ? Date.now() : null,
+            }
+          : task
       )
     );
   };
@@ -73,10 +80,14 @@ export default function TodoContainer() {
   };
 
   const pendingTasks = tasks.filter((task) => !task.completed);
-  // .sort((a, b) => b.createdAt - a.createdAt);
 
-  const completedTasks = tasks.filter((task) => task.completed);
-  // .sort((a, b) => b.createdAt - a.createdAt);
+  const completedTasks = tasks
+    .filter((task) => task.completed)
+    .sort((a, b) => {
+      if (a.completedAt === null) return 1;
+      if (b.completedAt === null) return -1;
+      return b.completedAt - a.completedAt;
+    });
 
   return (
     <>
