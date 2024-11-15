@@ -3,7 +3,7 @@
 A feature-rich Todo application built with Next.js 14, React, and Tailwind CSS.
 
 <div style="display: flex; gap: 10px; align-items: center;">
-  <img src="/public/desktop-view-image.png" alt="Desktop View" style="width: 75%; border-radius: 8px;" />
+  <img src="/public/desktop-view.png" alt="Desktop View" style="width: 75%; border-radius: 8px;" />
   <img src="/public/mobile-view.png" alt="Mobile View" style="width: 25%; border-radius: 8px;" />
 </div>
 
