@@ -12,7 +12,6 @@ export default function TodoContainer() {
 
   const addTask = (data: FormValues) => {
     setTasks([
-      ...tasks,
       {
         id: Date.now(),
         title: data.newTask,
@@ -22,6 +21,7 @@ export default function TodoContainer() {
         completed: false,
         createdAt: Date.now(),
       },
+      ...tasks,
     ]);
   };
 
