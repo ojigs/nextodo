@@ -1,5 +1,6 @@
 import { Task, FormValues } from "@/app/lib/definitions";
 import TaskItem from "./TaskItem";
+import { DragDropContext, Draggable, Droppable } from "@hello-pangea/dnd";
 
 interface TaskListProps {
   title: string;
@@ -10,6 +11,7 @@ interface TaskListProps {
   onEdit: (task: Task) => void;
   onSave: (id: number, data: FormValues) => void;
   onCancelEdit: () => void;
+  onReorderTasks: (result: any) => void;
 }
 
 export default function TaskList({
@@ -21,6 +23,7 @@ export default function TaskList({
   onEdit,
   onSave,
   onCancelEdit,
+  onReorderTasks,
 }: TaskListProps) {
   return (
     <div className="mb-8">
@@ -32,20 +35,46 @@ export default function TaskList({
           {tasks.length}
         </span>
       </div>
-      <div className="space-y-3">
-        {tasks.map((task) => (
-          <TaskItem
-            key={task.id}
-            task={task}
-            isEditing={editingId === task.id}
-            onToggle={onToggle}
-            onDelete={onDelete}
-            onEdit={onEdit}
-            onSave={onSave}
-            onCancelEdit={onCancelEdit}
-          />
-        ))}
-      </div>
+      <DragDropContext onDragEnd={onReorderTasks}>
+        <Droppable droppableId="taskList">
+          {(provided) => (
+            <div
+              className="space-y-3"
+              {...provided.droppableProps}
+              ref={provided.innerRef}
+            >
+              {tasks.map((task) => (
+                <Draggable
+                  draggableId={String(task.id)}
+                  key={task.id}
+                  index={tasks.indexOf(task)}
+                >
+                  {(provided) => (
+                    <div
+                      ref={provided.innerRef}
+                      {...provided.draggableProps}
+                      {...provided.dragHandleProps}
+                    >
+                      <TaskItem
+                        key={task.id}
+                        task={task}
+                        isEditing={editingId === task.id}
+                        onToggle={onToggle}
+                        onDelete={onDelete}
+                        onEdit={onEdit}
+                        onSave={onSave}
+                        onCancelEdit={onCancelEdit}
+                        provided={provided}
+                      />
+                    </div>
+                  )}
+                </Draggable>
+              ))}
+              {provided.placeholder}
+            </div>
+          )}
+        </Droppable>
+      </DragDropContext>
     </div>
   );
 }

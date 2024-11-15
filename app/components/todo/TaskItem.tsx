@@ -3,6 +3,7 @@
 import { Task, FormValues } from "@/app/lib/definitions";
 import { useForm } from "react-hook-form";
 import TaskDisplay from "./TaskDisplay";
+import { MoreHorizontal } from "lucide-react";
 
 interface TaskItemProps {
   task: Task;
@@ -12,6 +13,7 @@ interface TaskItemProps {
   onEdit: (task: Task) => void;
   onSave: (id: number, data: FormValues) => void;
   onCancelEdit: () => void;
+  provided: any;
 }
 
 export default function TaskItem({
@@ -22,6 +24,7 @@ export default function TaskItem({
   onEdit,
   onSave,
   onCancelEdit,
+  provided,
 }: TaskItemProps) {
   const { register, handleSubmit } = useForm<FormValues>({
     defaultValues: {
@@ -130,7 +133,12 @@ export default function TaskItem({
             </div>
           </form>
         ) : (
-          <TaskDisplay task={task} onEdit={onEdit} onDelete={onDelete} />
+          <>
+            <TaskDisplay task={task} onEdit={onEdit} onDelete={onDelete} />
+            <div className="cursor-grab" {...provided.dragHandleProps}>
+              <MoreHorizontal className="h-5 w-5 text-slate-400 hover:text-slate-700 transition-colors duration-200" />
+            </div>
+          </>
         )}
       </div>
     </div>

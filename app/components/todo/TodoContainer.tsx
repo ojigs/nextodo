@@ -57,13 +57,25 @@ export default function TodoContainer() {
     setEditingId(null);
   };
 
-  const pendingTasks = tasks
-    .filter((task) => !task.completed)
-    .sort((a, b) => b.createdAt - a.createdAt);
+  const handleReorderTasks = (result: any) => {
+    const { destination, source } = result;
 
-  const completedTasks = tasks
-    .filter((task) => task.completed)
-    .sort((a, b) => b.createdAt - a.createdAt);
+    if (!destination) return;
+
+    const reorderedTasks = Array.from(tasks);
+    // Remove the task from its original position
+    const [movedTask] = reorderedTasks.splice(source.index, 1);
+    // Insert the task at the new position
+    reorderedTasks.splice(destination.index, 0, movedTask);
+
+    setTasks(reorderedTasks);
+  };
+
+  const pendingTasks = tasks.filter((task) => !task.completed);
+  // .sort((a, b) => b.createdAt - a.createdAt);
+
+  const completedTasks = tasks.filter((task) => task.completed);
+  // .sort((a, b) => b.createdAt - a.createdAt);
 
   return (
     <>
@@ -77,6 +89,7 @@ export default function TodoContainer() {
         onEdit={startEditing}
         onSave={saveEdit}
         onCancelEdit={() => setEditingId(null)}
+        onReorderTasks={handleReorderTasks}
       />
       {completedTasks.length > 0 && (
         <TaskList
@@ -88,6 +101,7 @@ export default function TodoContainer() {
           onEdit={startEditing}
           onSave={saveEdit}
           onCancelEdit={() => setEditingId(null)}
+          onReorderTasks={handleReorderTasks}
         />
       )}
     </>
